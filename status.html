@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    $(if refresh-timeout)
+    <meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+    $(endif)
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Mikrotik Hotspot Login page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="/css/bootstrap-theme.css" rel="stylesheet">
+
+
+    <script language="JavaScript">
+        <!--
+        $(if advert-pending == 'yes')
+            var popup = '';
+        function focusAdvert() {
+            if (window.focus) popup.focus();
+        }
+        function openAdvert() {
+            popup = open('$(link-advert)', 'hotspot_advert', '');
+            setTimeout("focusAdvert()", 1000);
+        }
+        $(endif)
+        function openLogout() {
+            if (window.name != 'hotspot_status') return true;
+            open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+            window.close();
+            return false;
+        }
+        //-->
+    </script>
+</head>
+
+<body role="document">
+$(if advert-pending == 'yes')
+onLoad="openAdvert()"
+$(endif)
+
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">HotSpot Service</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-flag"></i> Change Language <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="$(link-login-only)?target=%2F&amp;dst=$(link-orig-esc)">English</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="$(link-login-only)?target=lv&amp;dst=$(link-orig-esc)">Latvinski</a></li>
+                        <li><a href="$(link-login-only)?target=pl&amp;dst=$(link-orig-esc)">Polski</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container theme-showcase" role="main">
+
+    <div class="row"><br></div>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="row">
+        $(if login-by == 'trial')
+            <br><h1>Welcome trial user!</h1><br>
+            $(elif login-by != 'mac')
+            <br><h1>Welcome $(username)!</h1><br>
+            $(endif)
+    </div>
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Your connection status</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-responsive table-bordered">
+                        <tbody>
+                        <tr><td align="right"> IP address:<i class="glyphicon glyphicon-phone"></i></td><td>$(ip)</td></tr>
+                        <tr><td align="right">bytes up/down: <i class="glyphicon glyphicon-transfer"></i> </td><td>$(bytes-in-nice) / $(bytes-out-nice)</td></tr>
+                        $(if session-time-left)
+                        <tr><td align="right">connected / left: <i class="glyphicon glyphicon-time"></i> </td><td>$(uptime) / $(session-time-left)</td></tr>
+                        $(else)
+                        <tr><td align="right">connected: <i class="glyphicon glyphicon-time"></i> </td><td>$(uptime)</td></tr>
+                        $(endif)
+                        $(if blocked == 'yes')
+                        <tr><td align="right">status:</td><td><div style="color: #FF8080">
+                            <a href="$(link-advert)" target="hotspot_advert">advertisement</a> required</div></td>
+                            $(elif refresh-timeout)
+                        <tr><td align="right">status refresh:</td><td>$(refresh-timeout)</td>
+                            $(endif)
+                        </tbody>
+                    </table>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                    <btn class="btn btn-default btn-block" onclick="location.reload();">Refresh</btn>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-lg-6">
+                                <input type="submit" value="Log Off" class="btn btn-danger btn-block">
+                                    </div>
+                                </form>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="well">
+        <div class="container">
+            <p class="text-muted">Powered by Mikrotik.com & Wispcasts.com</p>
+        </div>
+    </footer>
+
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/js/jquery-1.12.2.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/jquery-1.12.2.min.js"><\/script>')</script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

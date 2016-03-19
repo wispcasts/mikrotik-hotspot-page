@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Mikrotik Hotspot Login page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="/css/bootstrap-theme.css" rel="stylesheet">
+</head>
+
+<body role="document">
+<script language="JavaScript">
+    <!--
+    function openLogin() {
+        if (window.name != 'hotspot_logout') return true;
+        open('$(link-login)', '_blank', '');
+        window.close();
+        return false;
+    }
+    //-->
+</script>
+
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">HotSpot Service</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-flag"></i> Change Language <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="$(link-login-only)?target=%2F&amp;dst=$(link-orig-esc)">English</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="$(link-login-only)?target=lv&amp;dst=$(link-orig-esc)">Latvinski</a></li>
+                        <li><a href="$(link-login-only)?target=pl&amp;dst=$(link-orig-esc)">Polski</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container theme-showcase" role="main">
+
+    <div class="row"><br></div>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="row">
+        $(if login-by == 'trial')
+        <br><h1>Good bye trial user!</h1><br>
+        $(elif login-by != 'mac')
+        <br><h1>Good bye $(username)!</h1><br>
+        $(endif)
+    </div>
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Your connection status</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-responsive table-bordered">
+                        <tbody>
+                        <tr><td align="right">user name: <i class="glyphicon glyphicon-user"></td><td>$(username)</td></tr>
+                        <tr><td align="right">IP address: <i class="glyphicon glyphicon-phone"></td><td>$(ip)</td></tr>
+                        <tr><td align="right">MAC address: <i class="glyphicon glyphicon-cog"></td><td>$(mac)</td></tr>
+                        <tr><td align="right">session time: <i class="glyphicon glyphicon-time"></td><td>$(uptime)</td></tr>
+                        $(if session-time-left)
+                        <tr><td align="right">time left" <i class="glyphicon glyphicon-time"></td><td>$(session-time-left)</td></tr>
+                        $(endif)
+                        <tr><td align="right">used bytes up/down: <i class="glyphicon glyphicon-transfer"></td><td>$(bytes-in-nice) / $(bytes-out-nice)</td></tr>
+
+
+                        </tbody>
+                    </table>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="$(link-login)" name="login" onSubmit="return openLogin()">
+                                <input type="submit" value="take me back to login page" class="btn btn-primary btn-block">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="well">
+        <div class="container">
+            <p class="text-muted">Powered by Mikrotik.com & Wispcasts.com</p>
+        </div>
+    </footer>
+
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/js/jquery-1.12.2.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/jquery-1.12.2.min.js"><\/script>')</script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
