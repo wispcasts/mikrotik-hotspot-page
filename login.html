@@ -47,17 +47,17 @@ $(endif)
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">HotSpot Service</a>
+            <a class="navbar-brand" href="#">SHALIH VOUCHER HOTSPOT</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-flag"></i> Change Language <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-flag"></i> Contoh Menu <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="$(link-login-only)?target=%2F&amp;dst=$(link-orig-esc)">English</a></li>
+                        <li><a href="$(link-login-only)?target=%2F&amp;dst=$(link-orig-esc)">Sub Menu</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="$(link-login-only)?target=lv&amp;dst=$(link-orig-esc)">Latvinski</a></li>
-                        <li><a href="$(link-login-only)?target=pl&amp;dst=$(link-orig-esc)">Polski</a></li>
+                        <li><a href="$(link-login-only)?target=lv&amp;dst=$(link-orig-esc)">Sub Menu</a></li>
+                        <li><a href="$(link-login-only)?target=pl&amp;dst=$(link-orig-esc)">Sub Menu</a></li>
 
                     </ul>
                 </li>
@@ -66,13 +66,38 @@ $(endif)
     </div>
 </nav>
 
+    <br>
 <div class="container theme-showcase" role="main">
-
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <h1>Welcome to Mikrotik Hotspot</h1>
-        <p>Please put your username and Password bellow to use our internet service</p>
+        <h1 class="text-center">Selamat Datang</h1>
+        <table class="table table-bordered" style="margin-bottom: 0;">
+            <thead>
+                <tr>
+                    <th>Jenis Voucher</th>
+                    <th>Harga</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Voucher 12 jam</td>
+                    <td>Rp 2.000</td>
+                </tr>
+                <tr>
+                    <td>Voucher 1 Hari / 24 jam</td>
+                    <td>Rp 3.000</td>
+                </tr>
+                <tr>
+                    <td>Voucher 3 Hari</td>
+                    <td>Rp 6.000</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+    
+    <p class="text-center"><b>Hubungi Agus Nurwanto (0896-2979-6473)</b><br>Rumah bapak Suprapto Guru<br>Jl. Jambu RT 24 RW 4<br>Desa Gulun <br>Kecamatan Maospati Magetan.</p>
+    <br>
+
     $(if trial == 'yes')
     <div class="alert alert-success">
         Free Trial Available - in order to try service click big green button <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)" class="btn btn-success">Free Trial</a>
@@ -88,11 +113,12 @@ $(endif)
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Internet Login Field</h3>
+            <h3 class="panel-title">Form login INTERNET</h3>
         </div>
         <div class="panel-body">
             <form name="login" action="$(link-login-only)" method="post"
                   $(if chap-id) onSubmit="return doLogin()" $(endif)>
+                <p>Masukan username dan password untuk bisa terkoneksi internet.</p>
                 <input type="hidden" name="dst" value="$(link-orig)" />
                 <input type="hidden" name="popup" value="true" />
 
@@ -116,7 +142,7 @@ $(endif)
 
     <footer class="well">
         <div class="container">
-            <p class="text-muted">Powered by Mikrotik.com & Wispcasts.com</p>
+            <p class="text-muted">Powered by <a href="https://maremjaya.com" target="_blank">maremjaya.com</a></p>
         </div>
     </footer>
 
