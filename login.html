@@ -13,6 +13,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
     <link href="/css/bootstrap-theme.css" rel="stylesheet">
+    <link rel="manifest" href="/manifest.webmanifest">
 </head>
 
 <body role="document">
@@ -115,7 +116,7 @@ $(endif)
 
     $(if trial == 'yes')
     <div class="alert alert-success text-center">
-        Mau nyoba dulu sebelum beli vouchernya.<br>Bisa banget!! Clik tombol di bawah ini<br><a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)" class="btn btn-success">Coba Internet Gratis 3 Menit</a>
+        Mau nyoba dulu sebelum beli vouchernya.<br>Bisa banget!! Clik tombol di bawah ini<br><a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)" class="btn btn-success">Coba Internet Gratis 7 Menit</a>
     </div>
     $(endif)
     $(if error)
@@ -124,35 +125,53 @@ $(endif)
     </div>
     $(endif)
     <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Form login INTERNET</h3>
-        </div>
-        <div class="panel-body">
-            <form name="login" action="$(link-login-only)" method="post"
-                  $(if chap-id) onSubmit="return doLogin()" $(endif)>
-                <p>Masukan username dan password untuk bisa terkoneksi internet.</p>
-                <input type="hidden" name="dst" value="$(link-orig)" />
-                <input type="hidden" name="popup" value="true" />
-
-                <label for="username"></label>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
-                    <input type="text" name="username" class="form-control" placeholder="Username" aria-describedby="username-field" value="$(username)">
+        <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Form login INTERNET</h3>
                 </div>
-                <br>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-lock"></i> </span>
-                    <input type="password" name="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+                <div class="panel-body">
+                    <form name="login" action="$(link-login-only)" method="post"
+                          $(if chap-id) onSubmit="return doLogin()" $(endif)>
+                        <p>Masukan username dan password untuk bisa terkoneksi internet.</p>
+                        <input type="hidden" name="dst" value="$(link-orig)" />
+                        <input type="hidden" name="popup" value="true" />
+
+                        <label for="username"></label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" name="username" class="form-control" placeholder="Username" aria-describedby="username-field" value="$(username)">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-lock"></i> </span>
+                            <input type="password" name="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+                        </div>
+                        <br>
+                        <input type="submit" class="btn-block btn btn-primary" value="Login">
+                    </form>
                 </div>
-                <br>
-                <input type="submit" class="btn-block btn btn-primary" value="Login">
-            </form>
+            </div>
         </div>
     </div>
-    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success text-center">
+                <video id="player" playsinline controls style="width: 100%">
+                 <source src="http://agus.mj/video/Surah%20abasa%20_%20%20Ust%20Abdul%20Qodir.mp4" type="video/mp4">
+                </video>
+                <h3 class="text-center">Lihat semua koleksi video <b>SHALIH HOTSPOT</b> di <a href="http://agus.mj/video" target="_blank" style="font-weight: bold;">htpp://agus.mj/video/</a></h3>
+                <!-- 
+                <video poster=”/path/to/poster.jpg” id=”player” playsinline controls>
+                 <source src=”/path/to/video.mp4" type=”video/mp4">
+                 <source src=”/path/to/video.webm” type=”video/webm”>
+                 <track kind=”captions” label=”English captions” src=”/path/to/captions.vtt” srclang=”en” default>
+                </video> 
+                -->
+            </div> 
+        </div>
     </div>
 
     <footer class="well">
@@ -168,7 +187,30 @@ $(endif)
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="/js/jquery-1.12.2.min.js"></script>
-<script>window.jQuery || document.write('<script src="/js/jquery-1.12.2.min.js"><\/script>')</script>
+<script>
+    window.jQuery || document.write('<script src="/js/jquery-1.12.2.min.js"><\/script>');
+    let deferredPrompt;
+
+    // https://stackoverflow.com/questions/50762626/pwa-beforeinstallprompt-not-called
+    window.addEventListener('beforeinstallprompt', (e) => {
+        deferredPrompt = e;
+        deferredPrompt.prompt();
+        showInstallPromotion();
+    });
+    btnAdd.addEventListener('click', (e) => {
+        btnAdd.style.display = 'none';
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice
+        .then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the A2HS prompt');
+            } else {
+                console.log('User dismissed the A2HS prompt');
+            }
+            deferredPrompt = null;
+        });
+    });
+</script>
 <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
