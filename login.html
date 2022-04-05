@@ -7,12 +7,13 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Mikrotik Hotspot Login page</title>
+    <title>SHALIH HOTSPOT</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
     <link href="/css/bootstrap-theme.css" rel="stylesheet">
+    <link rel="manifest" href="/manifest.webmanifest">
 </head>
 
 <body role="document">
@@ -47,17 +48,17 @@ $(endif)
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">HotSpot Service</a>
+            <a class="navbar-brand" href="#">SHALIH HOTSPOT</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-flag"></i> Change Language <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-flag"></i> Contoh Menu <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="$(link-login-only)?target=%2F&amp;dst=$(link-orig-esc)">English</a></li>
+                        <li><a href="$(link-login-only)?target=%2F&amp;dst=$(link-orig-esc)">Sub Menu</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="$(link-login-only)?target=lv&amp;dst=$(link-orig-esc)">Latvinski</a></li>
-                        <li><a href="$(link-login-only)?target=pl&amp;dst=$(link-orig-esc)">Polski</a></li>
+                        <li><a href="$(link-login-only)?target=lv&amp;dst=$(link-orig-esc)">Sub Menu</a></li>
+                        <li><a href="$(link-login-only)?target=pl&amp;dst=$(link-orig-esc)">Sub Menu</a></li>
 
                     </ul>
                 </li>
@@ -66,16 +67,60 @@ $(endif)
     </div>
 </nav>
 
+    <br>
 <div class="container theme-showcase" role="main">
-
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <h1>Welcome to Mikrotik Hotspot</h1>
-        <p>Please put your username and Password bellow to use our internet service</p>
+        <h1 class="text-center">Selamat Datang</h1>
+        <table class="table table-bordered" style="margin-bottom: 0;">
+            <thead>
+                <tr>
+                    <th>Jenis Voucher</th>
+                    <th>Harga</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Voucher 12 jam</td>
+                    <td>Rp 2.000</td>
+                </tr>
+                <tr>
+                    <td>Voucher 1 Hari / 24 jam</td>
+                    <td>Rp 3.000</td>
+                </tr>
+                <tr>
+                    <td>Voucher 3 Hari</td>
+                    <td>Rp 6.000</td>
+                </tr>
+                <tr>
+                    <td>Voucher 2 jam WICO (Up to 100mb)</td>
+                    <td>Rp 4.000</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+    
+    <p class="text-center">
+        <b>Hubungi :</b>
+        <br>
+        <b>Agus Nurwanto (0896-2979-6473)</b>
+        <br>
+        <b>Felinda (0823-3886-3623)</b>
+        <br>
+        <b>Hammid (0812-3008-9380)</b>
+        <br>
+        Rumah bapak Suprapto pensiunan Guru
+        <br>
+        Jl. Jambu RT 24 RW 4
+        <br>
+        Desa Gulun 
+        <br>
+    Kecamatan Maospati Magetan.</p>
+    <br>
+
     $(if trial == 'yes')
-    <div class="alert alert-success">
-        Free Trial Available - in order to try service click big green button <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)" class="btn btn-success">Free Trial</a>
+    <div class="alert alert-success text-center">
+        Mau nyoba dulu sebelum beli vouchernya.<br>Bisa banget!! Clik tombol di bawah ini<br><a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)" class="btn btn-success">Coba Internet Gratis 7 Menit</a>
     </div>
     $(endif)
     $(if error)
@@ -84,39 +129,57 @@ $(endif)
     </div>
     $(endif)
     <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Internet Login Field</h3>
-        </div>
-        <div class="panel-body">
-            <form name="login" action="$(link-login-only)" method="post"
-                  $(if chap-id) onSubmit="return doLogin()" $(endif)>
-                <input type="hidden" name="dst" value="$(link-orig)" />
-                <input type="hidden" name="popup" value="true" />
-
-                <label for="username"></label>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
-                    <input type="text" name="username" class="form-control" placeholder="Username" aria-describedby="username-field" value="$(username)">
+        <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Form login INTERNET</h3>
                 </div>
-                <br>
-                <div class="input-group">
-                    <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-lock"></i> </span>
-                    <input type="password" name="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+                <div class="panel-body">
+                    <form name="login" action="$(link-login-only)" method="post"
+                          $(if chap-id) onSubmit="return doLogin()" $(endif)>
+                        <p>Masukan username dan password untuk bisa terkoneksi internet.</p>
+                        <input type="hidden" name="dst" value="$(link-orig)" />
+                        <input type="hidden" name="popup" value="true" />
+
+                        <label for="username"></label>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" name="username" class="form-control" placeholder="Username" aria-describedby="username-field" value="$(username)">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-lock"></i> </span>
+                            <input type="password" name="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+                        </div>
+                        <br>
+                        <input type="submit" class="btn-block btn btn-primary" value="Login">
+                    </form>
                 </div>
-                <br>
-                <input type="submit" class="btn-block btn btn-primary" value="Login">
-            </form>
+            </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success text-center">
+                <video id="player" playsinline controls style="width: 100%">
+                 <source src="http://video.agus.mj/Surah%20abasa%20_%20%20Ust%20Abdul%20Qodir.mp4" type="video/mp4">
+                </video>
+                <h3 class="text-center">Lihat semua koleksi video <b>SHALIH HOTSPOT</b> di <a href="http://video.agus.mj?autologin=1" target="_blank" style="font-weight: bold;">http://video.agus.mj</a></h3>
+            </div> 
+        </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-warning text-center">
+                <h4 class="text-center">Yuk gabung di group WA</h4>
+                <a target="_blank" class="btn btn-danger" href="https://chat.whatsapp.com/IacXvfcCMZDDBqENkbriy9">SHALIH HOTSPOT</a>
+            </div> 
+        </div>
     </div>
 
     <footer class="well">
         <div class="container">
-            <p class="text-muted">Powered by Mikrotik.com & Wispcasts.com</p>
+            <p class="text-muted">Powered by <a href="https://maremjaya.com">maremjaya.com</a></p>
         </div>
     </footer>
 
@@ -127,7 +190,30 @@ $(endif)
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="/js/jquery-1.12.2.min.js"></script>
-<script>window.jQuery || document.write('<script src="/js/jquery-1.12.2.min.js"><\/script>')</script>
+<script>
+    window.jQuery || document.write('<script src="/js/jquery-1.12.2.min.js"><\/script>');
+    let deferredPrompt;
+
+    // https://stackoverflow.com/questions/50762626/pwa-beforeinstallprompt-not-called
+    window.addEventListener('beforeinstallprompt', (e) => {
+        deferredPrompt = e;
+        deferredPrompt.prompt();
+        showInstallPromotion();
+    });
+    btnAdd.addEventListener('click', (e) => {
+        btnAdd.style.display = 'none';
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice
+        .then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the A2HS prompt');
+            } else {
+                console.log('User dismissed the A2HS prompt');
+            }
+            deferredPrompt = null;
+        });
+    });
+</script>
 <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

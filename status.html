@@ -11,7 +11,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Mikrotik Hotspot Login page</title>
+    <title>SHALIH HOTSPOT</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -57,7 +57,7 @@ $(endif)
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">HotSpot Service</a>
+            <a class="navbar-brand" href="#">SHALIH HOTSPOT</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -82,9 +82,9 @@ $(endif)
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="row">
         $(if login-by == 'trial')
-            <br><h1>Welcome trial user!</h1><br>
+            <br><h1 class="text-center">Selamat datang trial user!</h1><br>
             $(elif login-by != 'mac')
-            <br><h1>Welcome $(username)!</h1><br>
+            <br><h1 class="text-center">Selamat datang $(username)!</h1><br>
             $(endif)
     </div>
     <div class="row">
@@ -92,7 +92,7 @@ $(endif)
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Your connection status</h3>
+                    <h3 class="panel-title text-center">Status koneksi Kamu</h3>
                 </div>
                 <div class="panel-body">
                     <table class="table table-responsive table-bordered">
@@ -117,7 +117,7 @@ $(endif)
                         <div class="col-md-12">
                             <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
                                 <div class="col-md-6 col-sm-6 col-lg-6">
-                                    <btn class="btn btn-default btn-block" onclick="location.reload();">Refresh</btn>
+                                    <btn style="margin-bottom: 10px;" class="btn btn-default btn-block" onclick="location.reload();">Refresh</btn>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-lg-6">
                                 <input type="submit" value="Log Off" class="btn btn-danger btn-block">
@@ -131,9 +131,29 @@ $(endif)
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success text-center">
+                <video id="player" playsinline controls style="width: 100%">
+                 <source src="http://agus.mj/video/Surah%20abasa%20_%20%20Ust%20Abdul%20Qodir.mp4" type="video/mp4">
+                </video>
+                <h3 class="text-center">Lihat semua koleksi video <b>SHALIH HOTSPOT</b> di <a href="http://video.agus.mj?autologin=1" target="_blank" style="font-weight: bold;">htpp://video.agus.mj</a></h3>
+            </div> 
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-warning text-center">
+                <h4 class="text-center">Yuk gabung di group WA</h4>
+                <a target="_blank" class="btn btn-danger" href="https://chat.whatsapp.com/IacXvfcCMZDDBqENkbriy9">SHALIH HOTSPOT</a>
+            </div> 
+        </div>
+    </div>
+
     <footer class="well">
         <div class="container">
-            <p class="text-muted">Powered by Mikrotik.com & Wispcasts.com</p>
+            <p class="text-muted">Powered by <a href="https://maremjaya.com" target="_blank">maremjaya.com</a></p>
         </div>
     </footer>
 
